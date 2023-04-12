@@ -1,0 +1,15 @@
+.navbar {
+  padding: 2%;
+  background-color: darkgray;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.userInfo {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

@@ -1,5 +1,5 @@
 import { utils, verify } from "@noble/secp256k1";
-import { encodeLnurl } from "../../../utils";
+import { encodeLnurl } from "../../../utils/lnurl";
 
 export default function handler(req, res) {
   // Get the host from request headers
