@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   admin_key: { type: String, required: true },
   in_key: { type: String, required: true },
   pubkey: { type: String },
-  k1: { types: String },
+  k1: { type: String, required: true },
   profilePhoto: {
     type: String,
     default: function () {

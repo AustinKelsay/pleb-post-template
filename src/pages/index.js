@@ -1,15 +1,8 @@
-import { useState } from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { useSession } from "next-auth/react";
 import PostsList from "../components/posts/PostsList";
 import PostForm from "../components/posts/PostForm";
-import { Button } from "@chakra-ui/react";
 
 export default function Home() {
-  const { data: session, status } = useSession();
-  const [showForm, setShowForm] = useState(false);
-
   return (
     <>
       <Head>
@@ -18,13 +11,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <Button colorScheme={"blue"} onClick={() => setShowForm(!showForm)}>
-          Add post
-        </Button>
-        {showForm && <PostForm />}
+      <>
+        <PostForm />
         <PostsList />
-      </main>
+      </>
     </>
   );
 }

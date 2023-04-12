@@ -7,29 +7,59 @@ const authOptions = {
       id: "lightning",
       name: "lightning",
       credentials: {
-        pubkey: { label: "pubkey", type: "text" },
-        k1: { label: "k1", type: "text" },
+        user: {
+          username: {
+            label: "Username",
+            type: "text",
+            placeholder: "username",
+          },
+          wallet_id: {
+            label: "Wallet ID",
+            type: "text",
+            placeholder: "wallet_id",
+          },
+          wallet_admin: {
+            label: "Wallet Admin",
+            type: "text",
+            placeholder: "wallet_admin",
+          },
+          admin_key: {
+            label: "Admin Key",
+            type: "text",
+            placeholder: "admin_key",
+          },
+          in_key: { label: "In Key", type: "text", placeholder: "in_key" },
+          pubkey: { label: "Pubkey", type: "text", placeholder: "pubkey" },
+          k1: { label: "K1", type: "text", placeholder: "k1" },
+        },
       },
       async authorize(credentials, req) {
-        const { k1, pubkey } = credentials;
+        const user = {
+          username: credentials.username,
+          wallet_id: credentials.wallet_id,
+          wallet_admin: credentials.wallet_admin,
+          admin_key: credentials.admin_key,
+          in_key: credentials.in_key,
+          pubkey: credentials.pubkey,
+          k1: credentials.k1,
+        };
 
-        return { k1, pubkey };
+        return user;
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user && user.pubkey && user.k1) {
-        token.key = user.pubkey;
-        token.k1 = user.k1;
+      if (user) {
+        token.user = user;
       }
+
       return token;
     },
     async session({ session, token }) {
-      if (token.key && token.k1) {
-        session.user.pubkey = token.key;
-        session.user.k1 = token.k1;
-      }
+      session.user = token.user;
+
+      console.log("returning session", session);
 
       return session;
     },

@@ -15,7 +15,7 @@ async function findAndUpdateOrCreateUser(k1, pubkey) {
   // Find the user by their pubkey
   const user = await User.findOne({ pubkey });
 
-  if (user) {
+  if (user && user.k1) {
     // Update the user's k1 with the new one
     user.k1 = k1;
     await user.save();
@@ -25,7 +25,7 @@ async function findAndUpdateOrCreateUser(k1, pubkey) {
     await User.create({
       username: pubkey,
       pubkey,
-      k1,
+      k1: k1,
       // Add other required properties with default values or placeholders
       wallet_id: "placeholder_wallet_id",
       wallet_admin: "placeholder_wallet_admin",

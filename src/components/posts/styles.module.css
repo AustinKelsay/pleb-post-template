@@ -1,20 +1,51 @@
-.postsList {
-  margin: 1% auto;
-  width: 60%;
+.postForm {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
+}
+
+.form {
+  background-color: #2d3748;
+  color: #f7fafc;
+  margin-top: 2%;
+  padding: 2rem;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.formControl {
+  margin-bottom: 1rem;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
 }
 
 .post {
-  padding: 1%;
-  margin: 1% auto;
+  background-color: #2d3748;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  border-radius: 10px;
-  border: 1px solid black;
-  background-color: darkgray;
+}
+
+.post h3 {
+  margin: 0 0 0.5rem;
+  color: #a0aec0;
 }
 
 .post p {
-  margin: 2%;
+  margin: 0 0 1rem;
+}
+
+.post button {
+  align-self: flex-end;
 }

@@ -12,7 +12,7 @@ export default function handler(req, res) {
   const lnurl = generateLnurl(fullUrl, generatedK1);
 
   // Return the lnurl to the client for displaying the QR code
-  return res.status(200).json({ lnurl });
+  return res.status(200).json({ lnurl, k1: generatedK1 });
 }
 
 function generateLnurl(url, k1) {
