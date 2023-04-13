@@ -1,0 +1,21 @@
+.userCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a202c;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 3%;
+}
+
+.userInfo span {
+  color: #f7fafc;
+  margin-right: 1rem;
+}

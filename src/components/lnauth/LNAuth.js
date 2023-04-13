@@ -15,7 +15,14 @@ const LNAuth = () => {
   const signInUser = async () => {
     try {
       signIn("lightning", {
-        user,
+        username: user.username,
+        wallet_id: user.wallet_id,
+        wallet_admin: user.wallet_admin,
+        admin_key: user.admin_key,
+        in_key: user.in_key,
+        pubkey: user.pubkey,
+        k1: user.k1,
+        profilePhoto: user.profilePhoto,
       });
     } catch (error) {
       console.error("Error signing in user:", error);

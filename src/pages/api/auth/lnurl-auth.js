@@ -20,7 +20,6 @@ async function findAndUpdateOrCreateUser(k1, pubkey) {
     user.k1 = k1;
     await user.save();
   } else {
-    console.log("Creating new user:", pubkey);
     // Create a new user with the given k1 and pubkey properties
     await User.create({
       username: pubkey,

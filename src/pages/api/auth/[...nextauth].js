@@ -7,30 +7,33 @@ const authOptions = {
       id: "lightning",
       name: "lightning",
       credentials: {
-        user: {
-          username: {
-            label: "Username",
-            type: "text",
-            placeholder: "username",
-          },
-          wallet_id: {
-            label: "Wallet ID",
-            type: "text",
-            placeholder: "wallet_id",
-          },
-          wallet_admin: {
-            label: "Wallet Admin",
-            type: "text",
-            placeholder: "wallet_admin",
-          },
-          admin_key: {
-            label: "Admin Key",
-            type: "text",
-            placeholder: "admin_key",
-          },
-          in_key: { label: "In Key", type: "text", placeholder: "in_key" },
-          pubkey: { label: "Pubkey", type: "text", placeholder: "pubkey" },
-          k1: { label: "K1", type: "text", placeholder: "k1" },
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "username",
+        },
+        wallet_id: {
+          label: "Wallet ID",
+          type: "text",
+          placeholder: "wallet_id",
+        },
+        wallet_admin: {
+          label: "Wallet Admin",
+          type: "text",
+          placeholder: "wallet_admin",
+        },
+        admin_key: {
+          label: "Admin Key",
+          type: "text",
+          placeholder: "admin_key",
+        },
+        in_key: { label: "In Key", type: "text", placeholder: "in_key" },
+        pubkey: { label: "Pubkey", type: "text", placeholder: "pubkey" },
+        k1: { label: "K1", type: "text", placeholder: "k1" },
+        profilePhoto: {
+          label: "Profile Photo",
+          type: "text",
+          placeholder: "profilePhoto",
         },
       },
       async authorize(credentials, req) {
@@ -42,6 +45,7 @@ const authOptions = {
           in_key: credentials.in_key,
           pubkey: credentials.pubkey,
           k1: credentials.k1,
+          profilePhoto: credentials.profilePhoto,
         };
 
         return user;
@@ -59,9 +63,10 @@ const authOptions = {
     async session({ session, token }) {
       session.user = token.user;
 
-      console.log("returning session", session);
-
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      return url.split("/signin")[0];
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
