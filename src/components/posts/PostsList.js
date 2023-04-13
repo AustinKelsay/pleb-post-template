@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./styles.module.css";
 import { Button } from "@chakra-ui/react";
-// import { tipAction } from "../../flows/tipping";
+import { tipAction } from "../../lightning/lnBits";
 import { useSession } from "next-auth/react";
 
 const PostsList = () => {
@@ -30,7 +30,7 @@ const PostsList = () => {
           <span>{post.author}</span>
           <Button
             colorScheme="blue"
-            // onClick={() => tipAction(post.author, session)}
+            onClick={() => tipAction(post.author, session)}
             disabled={status !== "authenticated"}
           >
             Tip
