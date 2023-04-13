@@ -42,7 +42,7 @@ const UserCard = () => {
 
   return (
     <div>
-      {status === "authenticated" && (
+      {status === "authenticated" ? (
         <div className={styles.userCard}>
           <Image
             src={session?.user?.profilePhoto}
@@ -52,8 +52,12 @@ const UserCard = () => {
           />
           <div className={styles.userInfo}>
             <span>{formatPubkey(session?.user?.pubkey)}</span>
-            <span>balance: {420}</span>
+            <span>balance: {userBalance}</span>
           </div>
+        </div>
+      ) : (
+        <div className={styles.userInfo}>
+          <p>unauthenticated</p>
         </div>
       )}
     </div>

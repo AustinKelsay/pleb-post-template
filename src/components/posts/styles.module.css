@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 2%;
 }
 
 .form {
@@ -28,9 +29,10 @@
 
 .post {
   background-color: #2d3748;
+  color: #f7fafc;
   padding: 1rem;
   border-radius: 6px;
-  margin-bottom: 1rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -38,8 +40,9 @@
 }
 
 .post h3 {
-  margin: 0 0 0.5rem;
-  color: #a0aec0;
+  font-size: larger;
+  font-weight: 700;
+  margin: 0 0 1rem;
 }
 
 .post p {

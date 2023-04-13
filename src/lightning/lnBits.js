@@ -1,17 +1,4 @@
-import User from "../db/models/User";
-import connectMongo from "../db/connectMongo";
 import axios from "axios";
-
-export const userExists = async (username) => {
-  await connectMongo();
-
-  const exists = await User.find({ username: username });
-
-  if (exists.length > 0) {
-    return exists[0];
-  }
-  return false;
-};
 
 export const giveNewUserWallet = async (username) => {
   try {
@@ -35,22 +22,6 @@ export const giveNewUserWallet = async (username) => {
     return response.data.wallets[0];
   } catch (error) {
     console.error("An error occurred in giveNewUserWallet:", error);
-    throw error;
-  }
-};
-
-export const createUser = async (user) => {
-  try {
-    await connectMongo();
-
-    const created = await User.create(user);
-
-    if (created) {
-      return created;
-    }
-    return false;
-  } catch (error) {
-    console.error("An error occurred in createUser:", error);
     throw error;
   }
 };

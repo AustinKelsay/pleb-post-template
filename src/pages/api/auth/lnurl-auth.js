@@ -1,6 +1,7 @@
 import { utils, verify } from "@noble/secp256k1";
 import User from "../../../db/models/User";
 import connectMongo from "../../../db/connectMongo";
+import { giveNewUserWallet } from "../../../lightning/lnBits";
 
 function verifySig(sig, k1, key) {
   // Verify a secp256k1 signature
@@ -20,16 +21,18 @@ async function findAndUpdateOrCreateUser(k1, pubkey) {
     user.k1 = k1;
     await user.save();
   } else {
-    // Create a new user with the given k1 and pubkey properties
+    // Create a new wallet for the user
+    const wallet = await giveNewUserWallet(pubkey);
+    // Create a new user with the given pubkey and k1
     await User.create({
       username: pubkey,
       pubkey,
       k1: k1,
-      // Add other required properties with default values or placeholders
-      wallet_id: "placeholder_wallet_id",
-      wallet_admin: "placeholder_wallet_admin",
-      admin_key: "placeholder_admin_key",
-      in_key: "placeholder_in_key",
+      // Add the wallet properties to the user
+      wallet_id: wallet.id,
+      wallet_admin: wallet.admin,
+      admin_key: wallet.adminkey,
+      in_key: wallet.inkey,
     });
   }
 }

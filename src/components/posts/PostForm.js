@@ -17,7 +17,7 @@ const PostForm = () => {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3000/api/posts", {
+      .post("/api/posts", {
         title: formData.title,
         description: formData.description,
         author: session.user.username,
@@ -31,40 +31,42 @@ const PostForm = () => {
   };
 
   return (
-    <div className={styles.postForm}>
-      <Button colorScheme={"blue"} onClick={() => setShowForm(!showForm)}>
-        Add post
-      </Button>
-      {showForm && (
-        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-          <FormControl className={styles.formControl}>
-            <FormLabel>Title</FormLabel>
-            <Input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={(e) =>
-                setFormData({ ...formData, title: e.target.value })
-              }
-            />
-          </FormControl>
-          <FormControl className={styles.formControl}>
-            <FormLabel>Description</FormLabel>
-            <Input
-              type="text"
-              name="description"
-              value={formData.description}
-              onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
-              }
-            />
-          </FormControl>
-          <Button colorScheme={"blue"} type="submit">
-            Submit
-          </Button>
-        </form>
-      )}
-    </div>
+    status === "authenticated" && (
+      <div className={styles.postForm}>
+        <Button colorScheme={"blue"} onClick={() => setShowForm(!showForm)}>
+          Add post
+        </Button>
+        {showForm && (
+          <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+            <FormControl className={styles.formControl}>
+              <FormLabel>Title</FormLabel>
+              <Input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={(e) =>
+                  setFormData({ ...formData, title: e.target.value })
+                }
+              />
+            </FormControl>
+            <FormControl className={styles.formControl}>
+              <FormLabel>Description</FormLabel>
+              <Input
+                type="text"
+                name="description"
+                value={formData.description}
+                onChange={(e) =>
+                  setFormData({ ...formData, description: e.target.value })
+                }
+              />
+            </FormControl>
+            <Button colorScheme={"blue"} type="submit">
+              Submit
+            </Button>
+          </form>
+        )}
+      </div>
+    )
   );
 };
 

@@ -11,7 +11,7 @@ const PostsList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/posts")
+      .get("/api/posts")
       .then((res) => {
         setPosts(res.data);
       })
@@ -26,7 +26,8 @@ const PostsList = () => {
         <div className={styles.post} key={post._id}>
           <h3>{post.title}</h3>
           <p>{post.description}</p>
-          <p>{post.author}</p>
+          <span>author: </span>
+          <span>{post.author}</span>
           <Button
             colorScheme="blue"
             // onClick={() => tipAction(post.author, session)}
