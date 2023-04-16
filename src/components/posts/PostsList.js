@@ -23,7 +23,7 @@ const PostsList = () => {
   return (
     <div className={styles.postsList}>
       {posts.map((post) => (
-        <div className={styles.post} key={post._id}>
+        <div className={styles.post} key={post.id}>
           <h3>{post.title}</h3>
           <p>{post.description}</p>
           <span>author: </span>

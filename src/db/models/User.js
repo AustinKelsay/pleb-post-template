@@ -2,12 +2,13 @@ import { Schema, model, models } from "mongoose";
 
 const UserSchema = new Schema({
   username: { type: String, required: true },
+  pubkey: { type: String, required: true },
+  k1: { type: String, required: true },
   wallet_id: { type: String, required: true },
   wallet_admin: { type: String, required: true },
+  wallet_user: { type: String, required: true },
   admin_key: { type: String, required: true },
   in_key: { type: String, required: true },
-  pubkey: { type: String },
-  k1: { type: String, required: true },
   profilePhoto: {
     type: String,
     default: function () {

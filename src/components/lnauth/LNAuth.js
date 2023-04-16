@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import QRCode from "qrcode.react";
 import { useSession, signIn } from "next-auth/react";
-import styles from "./styles.module.css";
+import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 
 const LNAuth = () => {
   const [lnurl, setLnurl] = useState(null);
@@ -18,6 +18,7 @@ const LNAuth = () => {
         username: user.username,
         wallet_id: user.wallet_id,
         wallet_admin: user.wallet_admin,
+        wallet_user: user.wallet_user,
         admin_key: user.admin_key,
         in_key: user.in_key,
         pubkey: user.pubkey,
@@ -85,22 +86,38 @@ const LNAuth = () => {
     console.log("session", session);
   }, [session]);
 
+  const textColor = useColorModeValue("gray.500", "whiteAlpha.700");
+
   return (
-    <div className={styles.lnAuthContainer}>
+    <Flex
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      marginTop="2rem"
+    >
       {status === "loading" && (
-        <div className={styles.loadingText}>Loading...</div>
+        <Text fontSize="1.2rem" fontWeight="500" color={textColor}>
+          Loading...
+        </Text>
       )}
       {status === "unauthenticated" && (
-        <QRCode size={256} value={lnurl} className={styles.qrCode} />
+        <Box marginTop="1rem">
+          <QRCode size={256} value={lnurl} />
+        </Box>
       )}
       {status === "authenticated" && session.user.pubkey && (
-        <div>
-          <div className={styles.signedInText}>
+        <Box marginTop="1rem">
+          <Text
+            fontSize="1.2rem"
+            fontWeight="500"
+            textAlign="center"
+            color={textColor}
+          >
             Signed in with this node pubkey {session.user.pubkey}
-          </div>
-        </div>
+          </Text>
+        </Box>
       )}
-    </div>
+    </Flex>
   );
 };
 

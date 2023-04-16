@@ -22,6 +22,11 @@ const authOptions = {
           type: "text",
           placeholder: "wallet_admin",
         },
+        wallet_user: {
+          label: "Wallet User",
+          type: "text",
+          placeholder: "wallet_user",
+        },
         admin_key: {
           label: "Admin Key",
           type: "text",
@@ -42,6 +47,7 @@ const authOptions = {
           wallet_id: credentials.wallet_id,
           wallet_admin: credentials.wallet_admin,
           admin_key: credentials.admin_key,
+          wallet_user: credentials.wallet_user,
           in_key: credentials.in_key,
           pubkey: credentials.pubkey,
           k1: credentials.k1,

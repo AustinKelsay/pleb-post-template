@@ -19,9 +19,12 @@ const Navbar = () => {
       <Menu>
         <MenuButton as={Button}>Menu</MenuButton>
         <MenuList>
-          <MenuItem>Posts</MenuItem>
-          <MenuItem>Users</MenuItem>
-          <MenuItem>Profile</MenuItem>
+          <MenuItem onClick={() => router.push("/")}>Posts</MenuItem>
+          <MenuItem
+            onClick={() => router.push(`/user/${session.user.username}`)}
+          >
+            Profile
+          </MenuItem>
         </MenuList>
       </Menu>
 

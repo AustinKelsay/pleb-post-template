@@ -5,18 +5,10 @@
   justify-content: space-between;
   background-color: #1a202c;
   border-radius: 0.5rem;
-  /* 1rem on the side 0.5 rem on top and bottom */
   padding: 0.5rem 1rem;
 }
 
-.userInfo {
-  color: #f7fafc;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 3%;
-}
-
-.userInfo span {
-  margin-right: 1rem;
+.userCard:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }

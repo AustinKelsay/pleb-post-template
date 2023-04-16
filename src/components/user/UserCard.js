@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 
 const UserCard = () => {
   const [userBalance, setUserBalance] = useState(null);
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   const formatPubkey = (pubkey) => {
     if (!pubkey) return "";
@@ -26,7 +29,7 @@ const UserCard = () => {
     };
 
     axios
-      .get(`https://d42da20dc9.d.voltageapp.io/api/v1/wallet`, {
+      .get(`${process.env.NEXT_PUBLIC_LN_BITS_DOMAIN}/api/v1/wallet`, {
         headers,
       })
       .then((res) => {
@@ -40,27 +43,45 @@ const UserCard = () => {
       });
   }, [session]);
 
+  const textColor = useColorModeValue("gray.100", "gray.300");
+
   return (
-    <div>
+    <Box
+      className={styles.userCard}
+      onClick={() => router.push(`user/${session.user.pubkey}`)}
+    >
       {status === "authenticated" ? (
-        <div className={styles.userCard}>
+        <Flex
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          borderRadius="0.5rem"
+          padding="0.5rem 1rem"
+        >
           <Image
             src={session?.user?.profilePhoto}
             alt="User profile photo"
             width={50}
             height={50}
           />
-          <div className={styles.userInfo}>
-            <span>{formatPubkey(session?.user?.pubkey)}</span>
-            <span>balance: {userBalance}</span>
-          </div>
-        </div>
+          <Flex
+            direction="column"
+            alignItems="flex-start"
+            paddingLeft="3%"
+            color={textColor}
+          >
+            <Text marginRight="1rem">
+              {formatPubkey(session?.user?.pubkey)}
+            </Text>
+            <Text marginRight="1rem">balance: {userBalance}</Text>
+          </Flex>
+        </Flex>
       ) : (
-        <div className={styles.userInfo}>
-          <p>unauthenticated</p>
-        </div>
+        <Flex direction="column" alignItems="flex-start" color={textColor}>
+          <Text>unauthenticated</Text>
+        </Flex>
       )}
-    </div>
+    </Box>
   );
 };
 

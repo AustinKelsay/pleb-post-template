@@ -4,22 +4,20 @@ export const giveNewUserWallet = async (username) => {
   try {
     const header = {
       "Content-Type": "application/json",
-      "X-Api-Key": process.env.LNBITS_KEY,
+      "X-Api-Key": process.env.LN_BITS_KEY,
     };
 
     const body = {
       user_name: username,
       wallet_name: `${username}-wallet`,
-      admin_id: process.env.LNBITS_ADMIN_ID,
+      admin_id: process.env.LN_BITS_ADMIN_ID,
     };
 
     const response = await axios.post(
-      `${process.env.LN_BITS_USER_MANAGER_URL}`,
+      `${process.env.LN_BITS_USER_MANAGER_API}`,
       body,
       { headers: header }
     );
-
-    console.log("giveNewUserWallet response", response.data.wallets[0]);
 
     return response.data.wallets[0];
   } catch (error) {
@@ -28,7 +26,8 @@ export const giveNewUserWallet = async (username) => {
   }
 };
 
-export const createInvoice = async (user) => {
+export const createInvoice = async ({ user, amount = 1, memo = "tip" }) => {
+  console.log("createInvoice user", user);
   try {
     const header = {
       "Content-Type": "application/json",
@@ -36,13 +35,13 @@ export const createInvoice = async (user) => {
     };
 
     const body = {
-      memo: "tip",
+      memo: memo,
       out: false,
-      amount: 1,
+      amount: amount,
     };
 
     const response = await axios.post(
-      `https://d42da20dc9.d.voltageapp.io/api/v1/payments`,
+      `${process.env.NEXT_PUBLIC_LN_BITS_DOMAIN}/api/v1/payments`,
       body,
       { headers: header }
     );
@@ -67,7 +66,7 @@ export const payInvoice = async (invoice, session) => {
     };
 
     const response = await axios.post(
-      `https://d42da20dc9.d.voltageapp.io/api/v1/payments`,
+      `${process.env.NEXT_PUBLIC_LN_BITS_DOMAIN}/api/v1/payments`,
       body,
       { headers: header }
     );
@@ -90,8 +89,6 @@ export const tipAction = async (username, session) => {
 
       if (invoice) {
         const tip = await payInvoice(invoice, session);
-
-        console.log("tip", tip);
 
         if (tip) {
           return true;
