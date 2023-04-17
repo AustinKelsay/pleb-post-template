@@ -80,6 +80,7 @@ const LNAuth = () => {
   // Determine text color based on the current color mode
   const textColor = useColorModeValue("gray.100", "gray.300");
 
+  // Render the appropriate content based on the authentication status
   return (
     <Flex
       direction="column"
@@ -87,11 +88,14 @@ const LNAuth = () => {
       justifyContent="center"
       mt="2rem"
     >
+      {/* Show loading message if status is "loading" */}
       {status === "loading" && (
         <Text fontSize="1.2rem" fontWeight="500" color={textColor}>
           Loading...
         </Text>
       )}
+
+      {/* Show LNURL-Auth QR code if status is "unauthenticated" */}
       {status === "unauthenticated" && (
         <Flex
           direction="column"
@@ -99,16 +103,17 @@ const LNAuth = () => {
           justifyContent="space-evenly"
         >
           <Text fontSize="1.2rem" fontWeight="500" color={textColor}>
-            Scan with any LNURL-Auth enabled ligthning wallet to sing in or sing
+            Scan with any LNURL-Auth enabled lightning wallet to sign in or sign
             up for the first time
           </Text>
           <Spacer m={10} />
           <QRCode size={256} value={lnurl} />
         </Flex>
       )}
+
+      {/* Show the user's pubkey if status is "authenticated" */}
       {status === "authenticated" && session.user.pubkey && (
         <Box mt="1rem">
-          {" "}
           <Text
             fontSize="1.2rem"
             fontWeight="500"

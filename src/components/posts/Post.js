@@ -32,8 +32,10 @@ const Post = ({ post, loadingTip, handleTip, session, status }) => {
         </Heading>
         <HStack alignItems={"center"}>
           {loadingTip === post.id ? (
+            // Show spinner while the post is being tipped
             <Spinner size="xs" />
           ) : (
+            // Show the post's number of tips
             <Text>{post.tips}</Text>
           )}
           <TriangleUpIcon />
@@ -54,6 +56,7 @@ const Post = ({ post, loadingTip, handleTip, session, status }) => {
           <Text as="span">{new Date(post.created).toLocaleString()}</Text>
         </Text>
         {status === "authenticated" && session.user.pubkey !== post.author && (
+          // Button to tip the post if the user is authenticated and not the author
           <Button
             colorScheme="blue"
             onClick={() => handleTip(post.author, session, post.id, post.tips)}

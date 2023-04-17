@@ -5,6 +5,7 @@ export default function handler(req, res) {
   // Get the host from request headers
   const { host } = req.headers;
 
+  // Generate a random 32-byte value for k1
   const generatedK1 = utils.bytesToHex(utils.randomBytes(32));
 
   // Generate the lnurl-auth login URL using the full URL and generated k1 value

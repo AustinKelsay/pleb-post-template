@@ -1,12 +1,14 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+// Define the authentication options for NextAuth
 const authOptions = {
   providers: [
     CredentialsProvider({
       id: "lightning",
       name: "lightning",
       credentials: {
+        // Define the credentials that users must provide to authenticate
         username: {
           label: "Username",
           type: "text",
@@ -42,6 +44,7 @@ const authOptions = {
         },
       },
       async authorize(credentials, req) {
+        // Define the authorize function to validate user credentials
         const user = {
           username: credentials.username,
           wallet_id: credentials.wallet_id,
@@ -59,7 +62,9 @@ const authOptions = {
     }),
   ],
   callbacks: {
+    // Define the callbacks for the authentication process
     async jwt({ token, user }) {
+      // Define the jwt callback to add the user object to the token
       if (user) {
         token.user = user;
       }
@@ -67,19 +72,22 @@ const authOptions = {
       return token;
     },
     async session({ session, token }) {
+      // Define the session callback to add the user object to the session
       session.user = token.user;
 
       return session;
     },
     async redirect({ url, baseUrl }) {
+      // Define the redirect callback to redirect the user to the root URL after signing in
       return url.split("/signin")[0];
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
-  session: { jwt: true },
+  secret: process.env.NEXTAUTH_SECRET, // Set the secret key used for encryption
+  session: { jwt: true }, // Use JWTs for session tokens
   jwt: {
-    signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
+    signingKey: process.env.JWT_SIGNING_PRIVATE_KEY, // Set the private key used for signing JWTs
   },
 };
 
+// Export the NextAuth object with the defined authentication options
 export default NextAuth(authOptions);

@@ -24,12 +24,18 @@ import {
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
 export const CreateInvoiceModal = ({ isOpen, onClose }) => {
+  // State for storing the amount, memo, and generated invoice
   const [amount, setAmount] = useState("");
   const [memo, setMemo] = useState("");
   const [generatedInvoice, setGeneratedInvoice] = useState("");
+
+  // Get the user session using the Next.js `useSession` hook
   const { status, data: session } = useSession();
+
+  // Hook for copying the generated invoice to the clipboard
   const { hasCopied, onCopy } = useClipboard(generatedInvoice);
 
+  // Handle form submission by creating an invoice
   const handleSubmit = async () => {
     if (status === "authenticated") {
       try {
@@ -49,11 +55,13 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
     }
   };
 
+  // Close the modal and reset the generated invoice state
   const closeModal = () => {
     setGeneratedInvoice("");
     onClose();
   };
 
+  // Render the component
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
       <ModalOverlay />
@@ -61,6 +69,7 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
         <ModalHeader>Create Invoice</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
+          {/* If an invoice has been generated, show the QR code and invoice details */}
           {generatedInvoice ? (
             <Box>
               <Center mb={4}>
@@ -77,6 +86,7 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
               </Button>
             </Box>
           ) : (
+            // Otherwise, show the form for creating an invoice
             <>
               <FormControl id="amount" mb={4}>
                 <FormLabel>Amount</FormLabel>
@@ -100,6 +110,7 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
           )}
         </ModalBody>
         <ModalFooter>
+          {/* Show the submit button if an invoice has not been generated */}
           {generatedInvoice ? null : (
             <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
               Submit
@@ -112,16 +123,21 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
 };
 
 export const PayInvoiceModal = ({ isOpen, onClose }) => {
+  // State for storing the invoice and payment success status
   const [invoice, setInvoice] = useState("");
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+
+  // Get the user session using the Next.js `useSession` hook
   const { status, data: session } = useSession();
 
+  // Handle form submission by paying the invoice
   const handleSubmit = async () => {
     if (status === "authenticated") {
       try {
         const payment = await payInvoice(invoice, session);
         console.log("Payment successful:", payment);
         setPaymentSuccess(true);
+        // Reset the payment success status and close the modal after 2 seconds
         setTimeout(() => {
           setPaymentSuccess(false);
           onClose();
@@ -134,6 +150,7 @@ export const PayInvoiceModal = ({ isOpen, onClose }) => {
     }
   };
 
+  // Render the component
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -142,12 +159,14 @@ export const PayInvoiceModal = ({ isOpen, onClose }) => {
         <ModalCloseButton />
         <ModalBody>
           <VStack spacing={4}>
+            {/* Show the payment success message if the payment was successful */}
             {paymentSuccess ? (
               <>
                 <CheckCircleIcon boxSize="40px" color="green.500" />
                 <Text>Payment successful!</Text>
               </>
             ) : (
+              // Otherwise, show the form for paying an invoice
               <FormControl id="invoice" mb={4}>
                 <FormLabel>Invoice</FormLabel>
                 <Input
