@@ -10,7 +10,7 @@
  - Tipping flow for Posts
 
 
-## (Easy setup) using legend.lnbits hosted node
+## (Easy setup) Using a hosted node with legend.lnbits
  1. Visit https://legend.lnbits.com/ and create a wallet with any name
 <img width="1303" alt="image" src="https://user-images.githubusercontent.com/53542748/232330418-93a8cfe2-fa10-4eec-aac1-b81bc3b75af1.png">
  2. Click on the "extensions" tab in the sidebar and enable the User Manager extension
@@ -26,7 +26,7 @@
 
 
 
-## Using Voltage
+## (Intermediate setup) Using your own node with Voltage
  1. Visit https://nodes.voltage.cloud
  2. Click 'Create Node'
 <img width="814" alt="image" src="https://user-images.githubusercontent.com/53542748/232112545-e717f1ce-a451-484c-99e7-d3ae2a43a5bd.png">
