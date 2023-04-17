@@ -28,19 +28,25 @@ const UserCard = () => {
       "X-Api-Key": session.user.in_key,
     };
 
-    axios
-      .get(`${process.env.NEXT_PUBLIC_LN_BITS_DOMAIN}/api/v1/wallet`, {
-        headers,
-      })
-      .then((res) => {
-        console.log("user wallet res", res);
+    const fetchBalance = () => {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_LN_BITS_DOMAIN}/api/v1/wallet`, {
+          headers,
+        })
+        .then((res) => {
+          setUserBalance(res.data.balance / 1000);
+        })
+        .catch((err) => {
+          console.log("user wallet err");
+          console.log(err);
+        });
+    };
 
-        setUserBalance(res.data.balance / 1000);
-      })
-      .catch((err) => {
-        console.log("user wallet err");
-        console.log(err);
-      });
+    fetchBalance(); // Fetch balance immediately on mount
+
+    const intervalId = setInterval(fetchBalance, 3000); // Fetch balance every 3 seconds
+
+    return () => clearInterval(intervalId); // Cleanup function to clear interval
   }, [session]);
 
   const textColor = useColorModeValue("gray.100", "gray.300");
@@ -48,7 +54,12 @@ const UserCard = () => {
   return (
     <Box
       className={styles.userCard}
-      onClick={() => router.push(`user/${session.user.pubkey}`)}
+      onClick={() => {
+        const currentRoute = router.asPath;
+        if (!currentRoute.startsWith("/user/")) {
+          router.replace(`user/${session.user.pubkey}`);
+        }
+      }}
     >
       {status === "authenticated" ? (
         <Flex

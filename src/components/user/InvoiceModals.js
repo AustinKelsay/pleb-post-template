@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createInvoice, payInvoice } from "@/lightning/lnBits";
 import { useSession } from "next-auth/react";
+import QRCode from "qrcode.react";
 import {
   Button,
   FormControl,
@@ -17,6 +18,7 @@ import {
   Box,
   Text,
   useClipboard,
+  Flex,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
@@ -60,7 +62,13 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
         <ModalBody>
           {generatedInvoice ? (
             <Box>
-              <Text>Your invoice:</Text>
+              <Flex
+                flexDirection={"column"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <QRCode value={generatedInvoice} size={256} />
+              </Flex>
               <Input
                 value={generatedInvoice}
                 isReadOnly
@@ -95,11 +103,7 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
           )}
         </ModalBody>
         <ModalFooter>
-          {generatedInvoice ? (
-            <Button colorScheme="blue" mr={3} onClick={closeModal}>
-              Close
-            </Button>
-          ) : (
+          {generatedInvoice ? null : (
             <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
               Submit
             </Button>

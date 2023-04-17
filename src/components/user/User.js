@@ -32,19 +32,25 @@ const User = () => {
       "X-Api-Key": session.user.in_key,
     };
 
-    axios
-      .get(`${process.env.NEXT_PUBLIC_LN_BITS_DOMAIN}/api/v1/wallet`, {
-        headers,
-      })
-      .then((res) => {
-        console.log("user wallet res", res);
+    const fetchBalance = () => {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_LN_BITS_DOMAIN}/api/v1/wallet`, {
+          headers,
+        })
+        .then((res) => {
+          setUserBalance(res.data.balance / 1000);
+        })
+        .catch((err) => {
+          console.log("user wallet err");
+          console.log(err);
+        });
+    };
 
-        setUserBalance(res.data.balance / 1000);
-      })
-      .catch((err) => {
-        console.log("user wallet err");
-        console.log(err);
-      });
+    fetchBalance(); // Fetch balance immediately on mount
+
+    const intervalId = setInterval(fetchBalance, 3000); // Fetch balance every 3 seconds
+
+    return () => clearInterval(intervalId); // Cleanup function to clear interval
   }, [session]);
 
   const textColor = useColorModeValue("gray.100", "gray.300");
@@ -64,7 +70,6 @@ const User = () => {
             alt="User profile photo"
             width={100}
             height={100}
-            borderRadius="full"
           />
           <Heading as="h2" size="xl" marginTop="1rem" color={textColor}>
             {session?.user?.username}

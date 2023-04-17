@@ -85,7 +85,7 @@ export const tipAction = async (username, session) => {
     const user = response.data[0];
 
     if (user) {
-      const invoice = await createInvoice(user);
+      const invoice = await createInvoice({ user });
 
       if (invoice) {
         const tip = await payInvoice(invoice, session);
