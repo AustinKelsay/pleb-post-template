@@ -2,28 +2,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import QRCode from "qrcode.react";
 import { useSession, signIn } from "next-auth/react";
-import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Spacer, Text, useColorModeValue } from "@chakra-ui/react";
 
 const LNAuth = () => {
+  // State variables to store lnurl, k1, and user data
   const [lnurl, setLnurl] = useState(null);
   const [k1, setK1] = useState(null);
   const [user, setUser] = useState(null);
 
+  // Use the NextAuth hook to get session data and status
   const { data: session, status } = useSession();
 
-  // Function to sign in the user using NextAuth
+  // Function to sign in the user using NextAuth and the lightning provider
   const signInUser = async () => {
     try {
       signIn("lightning", {
-        username: user.username,
-        wallet_id: user.wallet_id,
-        wallet_admin: user.wallet_admin,
-        wallet_user: user.wallet_user,
-        admin_key: user.admin_key,
-        in_key: user.in_key,
-        pubkey: user.pubkey,
+        ...user,
         k1: user.k1,
-        profilePhoto: user.profilePhoto,
       });
     } catch (error) {
       console.error("Error signing in user:", error);
@@ -58,20 +53,16 @@ const LNAuth = () => {
       });
 
       const data = response.data;
+
       if (data.user) {
         setUser(data.user);
-      }
-      // Check if the user has been authenticated
-      if (session && session.user && session.user.pubkey) {
-        // Clear the interval to stop polling
-        clearInterval(intervalId);
       }
     } catch (error) {
       console.error("Error polling for verified response:", error);
     }
   };
 
-  // Poll for a verified response every 2 seconds
+  // Poll for a verified response every 2 seconds and sign in the user if they exist
   useEffect(() => {
     if (user) {
       signInUser();
@@ -86,14 +77,15 @@ const LNAuth = () => {
     console.log("session", session);
   }, [session]);
 
-  const textColor = useColorModeValue("gray.500", "whiteAlpha.700");
+  // Determine text color based on the current color mode
+  const textColor = useColorModeValue("gray.100", "gray.300");
 
   return (
     <Flex
       direction="column"
       alignItems="center"
       justifyContent="center"
-      marginTop="2rem"
+      mt="2rem"
     >
       {status === "loading" && (
         <Text fontSize="1.2rem" fontWeight="500" color={textColor}>
@@ -101,12 +93,22 @@ const LNAuth = () => {
         </Text>
       )}
       {status === "unauthenticated" && (
-        <Box marginTop="1rem">
+        <Flex
+          direction="column"
+          alignItems="center"
+          justifyContent="space-evenly"
+        >
+          <Text fontSize="1.2rem" fontWeight="500" color={textColor}>
+            Scan with any LNURL-Auth enabled ligthning wallet to sing in or sing
+            up for the first time
+          </Text>
+          <Spacer m={10} />
           <QRCode size={256} value={lnurl} />
-        </Box>
+        </Flex>
       )}
       {status === "authenticated" && session.user.pubkey && (
-        <Box marginTop="1rem">
+        <Box mt="1rem">
+          {" "}
           <Text
             fontSize="1.2rem"
             fontWeight="500"

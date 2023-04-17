@@ -1,11 +1,21 @@
+import React from "react";
+import { Box } from "@chakra-ui/react";
 import Navbar from "./navbar/Navbar";
-import styles from "../styles/Home.module.css";
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
-    <div className={styles.main}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      backgroundColor="#1A202C"
+      minHeight="100vh"
+      width="100%"
+    >
       <Navbar />
       <main>{children}</main>
-    </div>
+    </Box>
   );
-}
+};
+
+export default Layout;

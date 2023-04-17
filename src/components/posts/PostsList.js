@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./styles.module.css";
-import { Button, Flex, Text, Spinner } from "@chakra-ui/react";
-import { TriangleUpIcon } from "@chakra-ui/icons";
-import { tipAction } from "../../lightning/lnBits";
+import { Box } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
+import { tipAction } from "../../lightning/lnBits";
+import Post from "./Post";
 
 const PostsList = () => {
   const { data: session, status } = useSession();
@@ -15,7 +14,10 @@ const PostsList = () => {
     axios
       .get("/api/posts")
       .then((res) => {
-        setPosts(res.data);
+        const sortedPosts = res.data.sort(
+          (a, b) => new Date(b.created) - new Date(a.created)
+        );
+        setPosts(sortedPosts);
       })
       .catch((err) => {
         console.log(err);
@@ -46,38 +48,24 @@ const PostsList = () => {
   };
 
   return (
-    <div className={styles.postsList}>
+    <Box
+      d="flex"
+      flexDirection="column"
+      alignItems="center"
+      width="100%"
+      maxWidth="800px"
+    >
       {posts.map((post) => (
-        <div className={styles.post} key={post.id}>
-          <Flex
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-            alignItems={"center"}
-            width={"100%"}
-          >
-            <h3>{post.title}</h3>
-            <Flex flexDirection={"row"} alignItems={"center"}>
-              {loadingTip === post.id ? (
-                <Spinner size="xs" />
-              ) : (
-                <span>{post.tips}</span>
-              )}
-              <TriangleUpIcon />
-            </Flex>
-          </Flex>
-          <Text>{post.description}</Text>
-          <span>author: </span>
-          <span>{post.author}</span>
-          <Button
-            colorScheme="blue"
-            onClick={() => handleTip(post.author, session, post.id, post.tips)}
-            disabled={status !== "authenticated"}
-          >
-            Tip
-          </Button>
-        </div>
+        <Post
+          key={post.id}
+          post={post}
+          loadingTip={loadingTip}
+          handleTip={handleTip}
+          session={session}
+          status={status}
+        />
       ))}
-    </div>
+    </Box>
   );
 };
 

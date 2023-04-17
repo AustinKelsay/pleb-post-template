@@ -3,8 +3,13 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
-import styles from "./styles.module.css";
+import {
+  Flex,
+  Text,
+  useColorModeValue,
+  chakra,
+  useToken,
+} from "@chakra-ui/react";
 
 const UserCard = () => {
   const [userBalance, setUserBalance] = useState(null);
@@ -50,16 +55,23 @@ const UserCard = () => {
   }, [session]);
 
   const textColor = useColorModeValue("gray.100", "gray.300");
+  const backgroundColor = useColorModeValue("gray.800", "gray.700");
+  const hoverOpacity = useToken("opacities", "200");
+
+  const handleClick = () => {
+    const currentRoute = router.asPath;
+    if (!currentRoute.startsWith("/user/") && status === "authenticated") {
+      router.replace(`user/${session.user.pubkey}`);
+    }
+  };
 
   return (
-    <Box
-      className={styles.userCard}
-      onClick={() => {
-        const currentRoute = router.asPath;
-        if (!currentRoute.startsWith("/user/")) {
-          router.replace(`user/${session.user.pubkey}`);
-        }
-      }}
+    <chakra.div
+      onClick={handleClick}
+      backgroundColor={backgroundColor}
+      borderRadius="0.5rem"
+      padding="0.5rem 1rem"
+      _hover={{ opacity: hoverOpacity, cursor: "pointer" }}
     >
       {status === "authenticated" ? (
         <Flex
@@ -92,7 +104,7 @@ const UserCard = () => {
           <Text>unauthenticated</Text>
         </Flex>
       )}
-    </Box>
+    </chakra.div>
   );
 };
 

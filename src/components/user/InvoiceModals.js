@@ -19,6 +19,7 @@ import {
   Text,
   useClipboard,
   Flex,
+  Center,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
@@ -62,13 +63,9 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
         <ModalBody>
           {generatedInvoice ? (
             <Box>
-              <Flex
-                flexDirection={"column"}
-                justifyContent={"center"}
-                alignItems={"center"}
-              >
+              <Center mb={4}>
                 <QRCode value={generatedInvoice} size={256} />
-              </Flex>
+              </Center>
               <Input
                 value={generatedInvoice}
                 isReadOnly
@@ -81,7 +78,7 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
             </Box>
           ) : (
             <>
-              <FormControl id="amount" marginBottom="1rem">
+              <FormControl id="amount" mb={4}>
                 <FormLabel>Amount</FormLabel>
                 <Input
                   type="number"
@@ -90,7 +87,7 @@ export const CreateInvoiceModal = ({ isOpen, onClose }) => {
                   onChange={(e) => setAmount(e.target.value)}
                 />
               </FormControl>
-              <FormControl id="memo" marginBottom="1rem">
+              <FormControl id="memo" mb={4}>
                 <FormLabel>Memo</FormLabel>
                 <Input
                   type="text"
@@ -151,7 +148,7 @@ export const PayInvoiceModal = ({ isOpen, onClose }) => {
                 <Text>Payment successful!</Text>
               </>
             ) : (
-              <FormControl id="invoice" marginBottom="1rem">
+              <FormControl id="invoice" mb={4}>
                 <FormLabel>Invoice</FormLabel>
                 <Input
                   type="text"
