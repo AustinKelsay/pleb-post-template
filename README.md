@@ -48,7 +48,7 @@
 
 <img width="733" alt="image" src="https://user-images.githubusercontent.com/53542748/232112672-b40c9099-d620-41c9-a1b0-8ddc56284fb5.png">
 
- 4. You can pick a Lite Node to start and use testnet if you are still in development
+ 4. You can pick a Lite Node to start and use testnet if you are still in development or mainnet if you just wanna start ripping some real invoices
 
 <img width="890" alt="image" src="https://user-images.githubusercontent.com/53542748/232112940-9b66e05f-6c78-46b4-bb3d-7a821f79f0bb.png">
 
