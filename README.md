@@ -1,7 +1,12 @@
 # pleb-post
+
+- [Features](#features)
+- [Easy setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
+- [Intermediate setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
+
 ## A fullstack lightning app template built with NextJS
 
-## Features:
+## Features: <a name="features"></a>
  - User authentication with LNUrl-Auth
  - Onboarding flow with auth / wallet creation / user creation
  - Lightning wallet management with LNBits
@@ -10,7 +15,8 @@
  - Tipping flow for Posts
 
 
-## (Easy setup) Using a hosted node with legend.lnbits
+## (Easy setup) Using a hosted node with legend.lnbits <a name="easy-setup-using-a-hosted-node-with-legend-lnbits"></a>
+
  1. Visit https://legend.lnbits.com/ and create a wallet with any name
 
 <img width="1303" alt="image" src="https://user-images.githubusercontent.com/53542748/232330418-93a8cfe2-fa10-4eec-aac1-b81bc3b75af1.png">
@@ -37,7 +43,8 @@
 
 
 
-## (Intermediate setup) Using your own node with Voltage
+## (Intermediate setup) Using your own node with Voltage <a name="intermediate-setup-using-your-own-node-with-voltage"></a>
+
  1. Visit https://nodes.voltage.cloud
 
  2. Click 'Create Node'
