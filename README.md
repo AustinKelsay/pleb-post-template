@@ -68,7 +68,7 @@
 
 <img width="901" alt="image" src="https://user-images.githubusercontent.com/53542748/232908022-8789e0af-f30d-4cc8-8116-56988bc0e445.png">
 
- 9. Now click on the 'Manage Extensions' tab in the left sidebar, scroll down to the "User Manager" extensions and click "enable"
+ 9. Now click on the 'Manage Extensions' tab in the left sidebar, scroll down to the "User Manager" extension and click "enable"
 
 <img width="317" alt="image" src="https://user-images.githubusercontent.com/53542748/232908673-94e1659d-bf02-4b03-84ce-9cb2c7f44dc7.png">
 
