@@ -3,9 +3,8 @@
 ## Table of Contents
 
 - [Features](#features)
-- [Setup Options](#setup-options)
-  - [Easy Setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
-  - [Intermediate Setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
+- [Easy Setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
+- [Intermediate Setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
 
 ## Features: <a name="features"></a>
  - User authentication with LNUrl-Auth
