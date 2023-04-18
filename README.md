@@ -15,6 +15,8 @@
  - Tipping flow for Posts
 
 
+## Setup
+
 ### (Easy setup) Using a hosted node with legend.lnbits <a name="easy-setup-using-a-hosted-node-with-legend-lnbits"></a>
 
  1. Visit https://legend.lnbits.com/ and create a wallet with any name
