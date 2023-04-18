@@ -1,8 +1,13 @@
 # pleb-post
 
-- [Features](#features)
-- [Easy setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
-- [Intermediate setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
+## Table of Contents
+
+- [Pleb-post](#pleb-post)
+  - [Features](#features)
+  - [Setup Options](#setup-options)
+    - [Easy Setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
+    - [Intermediate Setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
+
 
 ## A fullstack lightning app template built with NextJS
 
