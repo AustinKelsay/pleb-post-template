@@ -15,7 +15,7 @@
  - Tipping flow for Posts
 
 
-## (Easy setup) Using a hosted node with legend.lnbits <a name="easy-setup-using-a-hosted-node-with-legend-lnbits"></a>
+### (Easy setup) Using a hosted node with legend.lnbits <a name="easy-setup-using-a-hosted-node-with-legend-lnbits"></a>
 
  1. Visit https://legend.lnbits.com/ and create a wallet with any name
 
@@ -43,7 +43,7 @@
 
 
 
-## (Intermediate setup) Using your own node with Voltage <a name="intermediate-setup-using-your-own-node-with-voltage"></a>
+### (Intermediate setup) Using your own node with Voltage <a name="intermediate-setup-using-your-own-node-with-voltage"></a>
 
  1. Visit https://nodes.voltage.cloud
 
