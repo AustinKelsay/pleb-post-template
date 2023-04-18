@@ -1,15 +1,11 @@
-# pleb-post
+# pleb-post: A fullstack lightning app template built with NextJS
 
 ## Table of Contents
 
-- [Pleb-post](#pleb-post)
-  - [Features](#features)
-  - [Setup Options](#setup-options)
-    - [Easy Setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
-    - [Intermediate Setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
-
-
-## A fullstack lightning app template built with NextJS
+- [Features](#features)
+- [Setup Options](#setup-options)
+  - [Easy Setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
+  - [Intermediate Setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
 
 ## Features: <a name="features"></a>
  - User authentication with LNUrl-Auth
