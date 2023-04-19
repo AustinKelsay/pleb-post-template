@@ -4,9 +4,9 @@
 
 - [Features](#features)
 - [Setup](#setup)
- - [Environment Variables](#environment-variables)
- - [Easy: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
- - [Intermediate: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
+  - [Environment Variables](#environment-variables)
+  - [Easy: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
+  - [Intermediate: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
 
 ## Features: <a name="features"></a>
  - User authentication with LNUrl-Auth
