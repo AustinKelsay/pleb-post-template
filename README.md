@@ -1,6 +1,6 @@
 # pleb-post: A fullstack lightning app template built with NextJS
 
-## Table of Contents
+# Table of Contents
 
 - [Features](#features)
 - [Setup](#setup)
@@ -9,7 +9,7 @@
   - [Quickest: Using a hosted node with legend.lnbits](#quickest-using-a-hosted-node-with-legend-lnbits)
   - [Using your own node with Voltage](#using-your-own-node-with-voltage)
 
-## Features: <a name="features"></a>
+# Features: <a name="features"></a>
  - User authentication with LNUrl-Auth
  - Onboarding flow with auth / wallet creation / user creation
  - Lightning wallet management with LNBits
@@ -18,15 +18,15 @@
  - Tipping flow for Posts
 
 
-## Setup <a name="setup"></a>
+# Setup <a name="setup"></a>
 
-### Environment Variables <a name="environment-variables"></a>
+## Environment Variables <a name="environment-variables"></a>
 
 If you are running locally you need to rename .env.sample to .env
 
 .env.sample contains all of the necessary environment variables (some of them being optional/prefilled) with comments describing their purpose.
 
-### MongoDB Configuration <a name="mongodb-configuration"></a>
+## MongoDB Configuration <a name="mongodb-configuration"></a>
 
 In .env.sample there is an environment variable MONGO_URI you can set with your MongoDB connection string. If you are familiar with MongoDB, you can use your existing MongoDB instance by providing the connection string. If you don't have a MongoDB instance or are new to it, follow the steps below to set up a free serverless instance with MongoDB Atlas.
 
@@ -70,7 +70,7 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retr
 
 Now your MongoDB instance is connected, and the application will use it to store Users and Posts data.
 
-### (Quickest) Using a hosted node with legend.lnbits <a name="quickest-using-a-hosted-node-with-legend-lnbits"></a>
+## (Quickest) Using a hosted node with legend.lnbits <a name="quickest-using-a-hosted-node-with-legend-lnbits"></a>
 
  1. Visit https://legend.lnbits.com/ and create a wallet with any name
 
@@ -98,7 +98,7 @@ Now your MongoDB instance is connected, and the application will use it to store
 
 
 
-### Using your own node with Voltage <a name="using-your-own-node-with-voltage"></a>
+## Using your own node with Voltage <a name="using-your-own-node-with-voltage"></a>
 
  1. Visit https://nodes.voltage.cloud
 
