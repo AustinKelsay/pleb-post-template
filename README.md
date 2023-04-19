@@ -5,8 +5,8 @@
 - [Features](#features)
 - [Setup](#setup)
   - [Environment Variables](#environment-variables)
-  - [Easy: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
-  - [Intermediate: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
+  - [Quickest: Using a hosted node with legend.lnbits](#quickest-using-a-hosted-node-with-legend-lnbits)
+  - [Using your own node with Voltage](#using-your-own-node-with-voltage)
 
 ## Features: <a name="features"></a>
  - User authentication with LNUrl-Auth
@@ -25,7 +25,39 @@ If you are running locally you need to rename .env.sample to .env
 
 .env.sample contains all of the necessary environment variables (some of them being optional/prefilled) with comments describing their purpose.
 
-### (Easy) Using a hosted node with legend.lnbits <a name="easy-setup-using-a-hosted-node-with-legend-lnbits"></a>
+### MongoDB configuration
+
+In .env.sample there is an environment variable MONGO_URI you can set with your MongoDB connection string. If you are familiar with MongoDB, you can use your existing MongoDB instance by providing the connection string. If you don't have a MongoDB instance or are new to it, follow the steps below to set up a free serverless instance with MongoDB Atlas.
+
+1 Visit MongoDB Atlas and sign up for a new account or log in to your existing account.
+
+2 Click on "Create a New Cluster" and choose the "Free" tier.
+
+<img width="931" alt="image" src="https://user-images.githubusercontent.com/53542748/232910865-a5a5d5d5-5c5f-4b32-9ebc-83b6c893fd7a.png">
+
+3. Select your preferred cloud provider and region. Then, click on "Create Cluster" to start the deployment process. This may take a few minutes.
+
+4. Once the cluster is deployed, click on "Connect" to set up the connection to your cluster.
+
+<img width="931" alt="image" src="https://user-images.githubusercontent.com/53542748/232911236-8a4e84c5-4e1a-4b32-9ebc-83b6c893fd7a.png">
+
+5. In the "Connect to Your Cluster" window, click on "Connect your application."
+
+<img width="931" alt="image" src="https://user-images.githubusercontent.com/53542748/232911566-4e8f8c5d-7d1a-4b32-9ebc-83b6c893fd7a.png">
+
+6. Choose your preferred driver and version. Copy the connection string provided.
+
+7. Replace <password> with the password you created for your MongoDB user and <dbname> with the name of your database (e.g., pleb-post). It should look something like this: `mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority`
+
+8. Finally, paste the connection string into the .env file as the value for MONGO_URI.
+
+```
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority
+```
+
+Now your MongoDB instance is connected, and the application will use it to store Users and Posts data.
+
+### (Quickest) Using a hosted node with legend.lnbits <a name="quickest-using-a-hosted-node-with-legend-lnbits"></a>
 
  1. Visit https://legend.lnbits.com/ and create a wallet with any name
 
@@ -53,7 +85,7 @@ If you are running locally you need to rename .env.sample to .env
 
 
 
-### (Intermediate) Using your own node with Voltage <a name="intermediate-setup-using-your-own-node-with-voltage"></a>
+### Using your own node with Voltage <a name="using-your-own-node-with-voltage"></a>
 
  1. Visit https://nodes.voltage.cloud
 
