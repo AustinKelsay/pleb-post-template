@@ -56,15 +56,11 @@ In .env.sample there is an environment variable MONGO_URI you can set with your 
 
    - Click on the "Database Access" tab on the left sidebar.
 
-    <p align="center">
       <img width="100" alt="image" src="https://user-images.githubusercontent.com/53542748/233104485-1d66c6e8-d44b-4c56-aa64-c5d528afc2a0.png">
-    </p>
   
    - Click "Add New Database User".
   
-    <p align="center">
       <img width="800" alt="image" src="https://user-images.githubusercontent.com/53542748/233104869-0da7bd44-f689-4c47-bc86-3eaca93759b3.png">
-    </p>
 
    - Type in a username / password for this user and choose their permissions. Now this username and password can be used directly in your mongo uri string.
 
