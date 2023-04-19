@@ -3,8 +3,10 @@
 ## Table of Contents
 
 - [Features](#features)
-- [Easy Setup: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
-- [Intermediate Setup: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
+- [Setup](#setup)
+ - [Environment Variables](#environment-variables)
+ - [Easy: Using a hosted node with legend.lnbits](#easy-setup-using-a-hosted-node-with-legend-lnbits)
+ - [Intermediate: Using your own node with Voltage](#intermediate-setup-using-your-own-node-with-voltage)
 
 ## Features: <a name="features"></a>
  - User authentication with LNUrl-Auth
@@ -15,9 +17,15 @@
  - Tipping flow for Posts
 
 
-## Setup
+## Setup <a name="setup"></a>
 
-### (Easy setup) Using a hosted node with legend.lnbits <a name="easy-setup-using-a-hosted-node-with-legend-lnbits"></a>
+### Environment Variables <a name="environment-variables"></a>
+
+If you are running locally you need to rename .env.sample to .env
+
+.env.sample contains all of the necessary environment variables (some of them being optional/prefilled) with comments describing their purpose.
+
+### (Easy) Using a hosted node with legend.lnbits <a name="easy-setup-using-a-hosted-node-with-legend-lnbits"></a>
 
  1. Visit https://legend.lnbits.com/ and create a wallet with any name
 
@@ -45,7 +53,7 @@
 
 
 
-### (Intermediate setup) Using your own node with Voltage <a name="intermediate-setup-using-your-own-node-with-voltage"></a>
+### (Intermediate) Using your own node with Voltage <a name="intermediate-setup-using-your-own-node-with-voltage"></a>
 
  1. Visit https://nodes.voltage.cloud
 
