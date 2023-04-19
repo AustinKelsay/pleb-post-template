@@ -5,6 +5,7 @@
 - [Features](#features)
 - [Setup](#setup)
   - [Environment Variables](#environment-variables)
+  - [MongoDB Configuration](#mongodb-configuration)
   - [Quickest: Using a hosted node with legend.lnbits](#quickest-using-a-hosted-node-with-legend-lnbits)
   - [Using your own node with Voltage](#using-your-own-node-with-voltage)
 
@@ -25,7 +26,7 @@ If you are running locally you need to rename .env.sample to .env
 
 .env.sample contains all of the necessary environment variables (some of them being optional/prefilled) with comments describing their purpose.
 
-### MongoDB configuration
+### MongoDB Configuration <a name="mongodb-configuration"></a>
 
 In .env.sample there is an environment variable MONGO_URI you can set with your MongoDB connection string. If you are familiar with MongoDB, you can use your existing MongoDB instance by providing the connection string. If you don't have a MongoDB instance or are new to it, follow the steps below to set up a free serverless instance with MongoDB Atlas.
 
@@ -51,15 +52,15 @@ In .env.sample there is an environment variable MONGO_URI you can set with your 
 
  7. Replace <password> with the password you created for your MongoDB user and <dbname> with the name of your database (e.g., pleb-post). It should look something like this: `mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority`
   
-   a. If you haven't made a MongoDB user yet you can do so clicking on the "Database Access" tab on the left sidebar
+   - If you haven't made a MongoDB user yet you can do so clicking on the "Database Access" tab on the left sidebar
   
   <img width="140" alt="image" src="https://user-images.githubusercontent.com/53542748/233104485-1d66c6e8-d44b-4c56-aa64-c5d528afc2a0.png">
   
-   b. Click "Add New Database User"
+   - Click "Add New Database User"
 
   <img width="1283" alt="image" src="https://user-images.githubusercontent.com/53542748/233104869-0da7bd44-f689-4c47-bc86-3eaca93759b3.png">
 
-   c. Type in a userame / password for this user and choose their permissions. Now this username and password can be used directly in your mongo uri string
+   - Type in a userame / password for this user and choose their permissions. Now this username and password can be used directly in your mongo uri string
 
  8. Finally, paste the connection string into the .env file as the value for MONGO_URI.
 
