@@ -148,7 +148,7 @@ Now your MongoDB instance is connected, and the application will use it to store
   
   <img width="493" alt="image" src="https://user-images.githubusercontent.com/53542748/234685073-92c15f7b-0cb9-4457-bcc1-246bb5ae6ee6.png">
   
- 13. Click on the "GET users" tab on the right sidebar and copy the URL in the example request. Put this as the LN_BITS_USER_MANAGER_API env variable in your .env
+ 13. In the same "GET users" tab on the right sidebar copy the FULL URL in the example request. Put this as the LN_BITS_USER_MANAGER_API env variable in your .env
   
 <img width="492" alt="image" src="https://user-images.githubusercontent.com/53542748/234682130-ae361816-5b59-4c5a-8f99-8f4681855824.png">
 
