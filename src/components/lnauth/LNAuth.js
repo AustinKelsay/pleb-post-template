@@ -107,7 +107,7 @@ const LNAuth = () => {
             up for the first time
           </Text>
           <Spacer m={10} />
-          <QRCode size={256} value={lnurl} />
+          <QRCode size={256} value={lnurl} style={{border: '2px solid white', borderRadius: '5px'}} />
         </Flex>
       )}
 

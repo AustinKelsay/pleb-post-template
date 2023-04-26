@@ -4,13 +4,14 @@
 - Twitter: @bitcoinplebdev
 - Nostr: npub1s9etjgzjglwlaxdhsveq0qksxyh6xpdpn8ajh69ruetrug957r3qpklxzl
 
+## Link to slides:
+[SLIDES](https://docs.google.com/presentation/d/1TdoideN6sG1Y9817mLBLAIClgPxGunttSZhxEpVU6rA/edit?usp=sharing)
+
 ## Session Agenda:
 Austin will walk through two simple Lightning app templates:
 
 - [pleb-node-template](https://github.com/AustinKelsay/pleb-node-template)
 - [pleb-post-template](https://github.com/AustinKelsay/pleb-post-template)
-
-The slides for this presentation can be found [HERE](https://twitter.com/bitcoinplebdev)
 
 ### pleb-node (ran locally)
 
