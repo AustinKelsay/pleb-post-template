@@ -143,12 +143,17 @@ Now your MongoDB instance is connected, and the application will use it to store
  11. Copy the URL and save it as the LN_BITS_USER_MANAGER_URL env variable in .env
 
 <img width="653" alt="image" src="https://user-images.githubusercontent.com/53542748/232909161-3634dd20-c71a-4b32-bf93-683373fbd326.png">
+  
+ 12. Click on the "GET users" tab on the right sidebar and copy the URL up to '/v1'. Put this as the LN_BITS_USER_MANAGER_API env variable in your .env
+  
+  <img width="513" alt="image" src="https://user-images.githubusercontent.com/53542748/234681797-36cb9424-8722-4060-848e-8a8e1c5c9629.png">
 
- 12. Click on the "Post user + initial wallet" tab on the right sidebar and copy the admin_id from the example request. Put this as the LN_BITS_ADMIN_ID env variable in your .env
+
+ 13. Click on the "Post user + initial wallet" tab on the right sidebar and copy the admin_id from the example request. Put this as the LN_BITS_ADMIN_ID env variable in your .env
 
 <img width="471" alt="image" src="https://user-images.githubusercontent.com/53542748/232909406-a52ef563-56a0-418c-b65e-13402de5b01b.png">
 
- 13. Now copy the X-Api-Key value from the same example request and set it as the LN_BITS_KEY env variable in your .env
+ 14. Now copy the X-Api-Key value from the same example request and set it as the LN_BITS_KEY env variable in your .env
 
 <img width="476" alt="image" src="https://user-images.githubusercontent.com/53542748/232909539-9575406f-f8bd-4f37-8a9f-bd027c1d4ec9.png">
 
