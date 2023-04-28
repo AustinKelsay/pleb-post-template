@@ -12,14 +12,14 @@
 
 <img width="1293" alt="image" src="https://user-images.githubusercontent.com/53542748/232330818-09f6499b-d2bd-402d-9887-3215b0da44e6.png">
 
- 4. Copy the URL and save it as a new replit secret called LN_BITS_USER_MANAGER_URL
+ 4. Copy the URL and save it as the value for LN_BITS_USER_MANAGER_URL in your .env.local
 
 <img width="608" alt="image" src="https://user-images.githubusercontent.com/53542748/232331415-93ae1c7f-2cbe-4304-bcbd-53fdea3cb4d9.png">
 
- 5. Click on the "Post user + initial wallet" tab on the right sidebar and copy the admin_id from the example request. Put this as a new replit secret called LN_BITS_ADMIN_ID
+ 5. Click on the "Post user + initial wallet" tab on the right sidebar and copy the admin_id from the example request. Save it as the value of the LN_BITS_ADMIN_ID environment variable
 
 <img width="522" alt="image" src="https://user-images.githubusercontent.com/53542748/232331722-88990620-8790-42e6-9b1d-415271fc7c62.png">
 
- 6. Now copy the X-Api-Key value from the same example request and set it as a new replit secret called LN_BITS_KEY
+ 6. Now copy the X-Api-Key value from the same example request and save it as the value for the LN_BITS_KEY environment variable
  
 <img width="519" alt="image" src="https://user-images.githubusercontent.com/53542748/232331938-da16752a-e1b1-4de6-8d2c-e0c236450e32.png">
