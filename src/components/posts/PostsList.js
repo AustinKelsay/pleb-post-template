@@ -12,8 +12,8 @@ const PostsList = () => {
   const [posts, setPosts] = useState([]);
   const [loadingTip, setLoadingTip] = useState(false);
 
-  // Fetch posts from API when component mounts
-  useEffect(() => {
+  // Function to fetch posts from API
+  const fetchPosts = () => {
     axios
       .get("/api/posts")
       .then((res) => {
@@ -27,6 +27,15 @@ const PostsList = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  // Fetch posts from API when component mounts and every 3 seconds
+  useEffect(() => {
+    fetchPosts(); // Fetch posts immediately on mount
+
+    const intervalId = setInterval(fetchPosts, 3000); // Fetch posts every 3 seconds
+
+    return () => clearInterval(intervalId); // Cleanup function to clear interval
   }, []);
 
   // Handle tipping action
